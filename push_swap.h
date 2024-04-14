@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/14 14:40:26 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/14 17:31:10 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_stack_a
+typedef struct s_stack
 {
 	int				data;
 	int				index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
-}					t_stack_a;
-
-typedef struct s_stack_b
-{
-	int				data;
-	int				index;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}					t_stack_b;
+}					t_stack;
 
 void				push_swap_parse(int argc, char **argv);
 
