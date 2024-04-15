@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/14 14:30:37 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/15 19:43:45 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	push_swap_parse(argc, argv);
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = malloc(sizeof(t_stack));
+	stack_b = malloc(sizeof(t_stack));
+	push_swap_parse(argc, argv, &stack_a);
 	return (0);
 }
