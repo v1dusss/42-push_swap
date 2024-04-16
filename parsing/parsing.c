@@ -6,11 +6,17 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/15 20:34:23 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/16 23:03:22 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	malloc_error(void)
+{
+	ft_putstr_fd("Malloc error\n", 2);
+	exit(1);
+}
 
 void	input_error(void)
 {
@@ -43,11 +49,11 @@ int	push_swap_atoi(const char *str)
 	return (0);
 }
 
-t_stack	*push_swap_lstnew(int *data)
+t_stack	*push_swap_lstnew(int data)
 {
 	t_stack	*stack_a;
 
-	stack_a = malloc(sizeof(t_list));
+	stack_a = malloc(sizeof(t_stack));
 	if (!stack_a)
 		return (0);
 	stack_a->nbr = data;
@@ -78,8 +84,9 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 			nbr = push_swap_atoi(split[j]);
 			if (nbr == 0 && split[j][0] != '0')
 				input_error();
-			ft_printf("%d\n", nbr);
-			new = push_swap_lstnew(&nbr);
+			new = push_swap_lstnew(nbr);
+			if (!new)
+				malloc_error();
 			if (index == 0)
 			{
 				*stack_a = new;
@@ -90,9 +97,8 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 				old->next = new;
 				new->prev = old;
 			}
+			new->index = index++;
 			old = new;
-			index++;
-			ft_printf("%d\n", new->nbr);
 		}
 	}
 }
