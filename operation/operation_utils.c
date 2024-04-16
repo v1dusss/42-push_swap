@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   operation_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/16 16:39:27 by vsivanat         ###   ########.fr       */
+/*   Created: 2024/04/16 16:37:00 by vsivanat          #+#    #+#             */
+/*   Updated: 2024/04/16 22:37:11 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft/libft.h"
-# include <stdio.h>
-# include <stdlib.h>
-
-typedef struct s_stack
+static void	swap(t_stack **stack)
 {
-	int				nbr;
-	int				index;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}					t_stack;
+	t_stack	*temp;
 
-void				push_swap_parse(int argc, char **argv, t_stack **stack_a);
-static void			swap(t_stack **stack);
-
-#endif
+	if (!*stack || !(*stack)->next)
+		return ;
+	temp = *stack;
+	*stack = (*stack)->next;
+	temp->next = (*stack)->next;
+	(*stack)->next = temp;
+}
