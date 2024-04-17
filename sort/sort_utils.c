@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/17 16:37:33 by vsivanat         ###   ########.fr       */
+/*   Created: 2024/04/17 14:49:01 by vsivanat          #+#    #+#             */
+/*   Updated: 2024/04/17 16:24:25 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	test(t_stack **stack_a)
+void	get_place(t_stack **stack)
 {
+	int		i;
 	t_stack	*tmp;
+	t_stack	*tmp2;
 
-	tmp = *stack_a;
+	tmp = lstfist(stack);
 	while (tmp)
 	{
-		printf("%d\t", tmp->nbr);
-		printf("%d\n", tmp->place);
+		tmp2 = lstfist(stack);
+		i = 1;
+		while (tmp2)
+		{
+			if (tmp2->nbr < tmp->nbr)
+				i++;
+			tmp2 = tmp2->next;
+		}
+		tmp->place = i;
 		tmp = tmp->next;
 	}
-}
-
-int	main(int argc, char **argv)
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = malloc(sizeof(t_stack));
-	stack_b = malloc(sizeof(t_stack));
-	push_swap_parse(argc, argv, &stack_a);
-	get_place(&stack_a);
-	lstfist(&stack_a);
-	test(&stack_a);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/16 23:03:22 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:25:23 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ int	push_swap_atoi(const char *str)
 
 t_stack	*push_swap_lstnew(int data)
 {
-	t_stack	*stack_a;
+	t_stack	*stack;
 
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
 		return (0);
-	stack_a->nbr = data;
-	stack_a->next = NULL;
-	return (stack_a);
+	stack->nbr = data;
+	stack->next = NULL;
+	stack->place = 0;
+	return (stack);
 }
 
 void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
@@ -66,14 +67,15 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	int		i;
 	int		j;
 	int		nbr;
-	int		index;
+	int		x;
 	char	**split;
 	t_stack	*old;
 	t_stack	*new;
 
 	old = NULL;
+	new = NULL;
 	i = 0;
-	index = 0;
+	x = 0;
 	nbr = 0;
 	while (++i < argc)
 	{
@@ -87,7 +89,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 			new = push_swap_lstnew(nbr);
 			if (!new)
 				malloc_error();
-			if (index == 0)
+			if (x++ == 0)
 			{
 				*stack_a = new;
 				new->prev = NULL;
@@ -97,7 +99,6 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 				old->next = new;
 				new->prev = old;
 			}
-			new->index = index++;
 			old = new;
 		}
 	}
