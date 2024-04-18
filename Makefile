@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/17 16:48:19 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/18 17:39:48 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,10 @@ VPATH =	parsing \
 SRC =	main.c \
 		parsing.c \
 		ft_lst_utils.c \
+		swap_functions.c \
+		push_functions.c \
+		rotate_functions.c \
+		reverse_rotate_functions.c \
 		bubble_sort.c \
 		sort_utils.c
 
