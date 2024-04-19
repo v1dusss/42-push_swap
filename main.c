@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/17 16:42:55 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/19 01:40:44 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	stack_b = malloc(sizeof(t_stack));
 	push_swap_parse(argc, argv, &stack_a);
 	get_place(&stack_a);
-	bubble_sort(&stack_a);
+	my_own_sort(&stack_a, &stack_b);
 	test(&stack_a);
 	return (0);
 }

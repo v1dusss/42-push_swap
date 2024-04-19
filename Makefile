@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    MAKEFILE                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/18 17:39:48 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/19 01:36:46 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ SRC =	main.c \
 		swap_functions.c \
 		push_functions.c \
 		rotate_functions.c \
-		reverse_rotate_functions.c \
+		reverse_functions.c \
 		bubble_sort.c \
+		my_own_sort.c \
 		sort_utils.c
 
 OBJ	:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))

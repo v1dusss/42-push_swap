@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 19:43:53 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/18 20:00:14 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/19 09:05:06 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ra(t_stack **stack_a)
 	t_stack	*temp;
 	t_stack	*temp_2;
 
-	if (!*stack_a)
+	if (!*stack_a)ed`wdefgt5y6trfdeaz
 		return ;
 	temp = lstfist(stack_a);
 	temp_2 = temp->next;
