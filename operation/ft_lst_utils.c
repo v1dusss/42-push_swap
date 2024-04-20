@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/19 01:57:11 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:08:38 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,43 @@
 
 t_stack	*lstfist(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 
-	tmp = *stack;
-	if (!tmp)
+	temp = *stack;
+	if (!temp)
 		return (NULL);
-	while (tmp->prev)
+	while (temp->prev)
 	{
-		tmp = tmp->prev;
+		temp = temp->prev;
 	}
-	return (tmp);
+	return (temp);
 }
 
 t_stack	*lstlast(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*temp;
 
-	tmp = *stack;
-	if (!tmp)
+	temp = *stack;
+	if (!temp)
 		return (NULL);
-	while (tmp->next)
+	while (temp->next)
 	{
-		tmp = tmp->next;
+		temp = temp->next;
 	}
-	return (tmp);
+	return (temp);
+}
+
+int	lstsize(t_stack **stack)
+{
+	t_stack	*temp;
+	int		count;
+
+	temp = *stack;
+	count = 0;
+	while (temp)
+	{
+		temp = temp->next;
+		count++;
+	}
+	return (count);
 }
