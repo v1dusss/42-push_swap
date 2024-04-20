@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:16:34 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/18 15:58:10 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:44:07 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,34 @@
 
 void	sa(t_stack **stack_a)
 {
-	t_stack	*temp_1;
-	t_stack	*temp_2;
+	t_stack	*temp;
+	t_stack	*a;
 
 	if (!*stack_a || !(*stack_a)->next)
 		return ;
-	temp_1 = lstfist(stack_a);
-	temp_2 = temp_1->next;
-	if (temp_1->nbr > temp_2->nbr)
-	{
-		temp_1->next = temp_2->next;
-		temp_2->prev = temp_1->prev;
-		temp_1->prev = temp_2;
-		temp_2->next = temp_1;
-		if (temp_1->next)
-			temp_1->next->prev = temp_1;
-		if (temp_2->prev)
-			temp_2->prev->next = temp_2;
-		if (temp_1 == *stack_a)
-			*stack_a = temp_2;
-	}
+	a = stack_a;
+	temp = a->next;
+	temp->prev = NULL;
+	a->next = temp->next;
+	temp->next = a;
+	a->prev = temp;
+	*stack_a = temp;
 }
 
 void	sb(t_stack **stack_b)
 {
-	t_stack	*temp_1;
-	t_stack	*temp_2;
+	t_stack	*temp;
+	t_stack	*b;
 
 	if (!*stack_b || !(*stack_b)->next)
 		return ;
-	temp_1 = lstfist(stack_b);
-	temp_2 = temp_1->next;
-	if (temp_1->nbr < temp_2->nbr)
-	{
-		temp_1->next = temp_2->next;
-		temp_2->prev = temp_1->prev;
-		temp_1->prev = temp_2;
-		temp_2->next = temp_1;
-		if (temp_1->next)
-			temp_1->next->prev = temp_1;
-		if (temp_2->prev)
-			temp_2->prev->next = temp_2;
-		if (temp_1 == *stack_b)
-			*stack_b = temp_2;
-	}
+	b = stack_b;
+	temp = b->next;
+	temp->prev = NULL;
+	b->next = temp->next;
+	temp->next = b;
+	b->prev = temp;
+	*stack_b = temp;
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)

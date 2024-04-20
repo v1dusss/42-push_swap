@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 21:31:56 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/18 17:42:45 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/20 17:20:10 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,34 @@
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp_1;
-	t_stack	*temp_2;
+	t_stack	*temp;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (!*stack_b)
 		return ;
-	temp_1 = lstfist(stack_a);
-	temp_2 = lstfist(stack_b);
-	if (temp_1)
-	{
-		temp_1->prev = temp_2;
-		temp_2->next = temp_1;
-	}
-	*stack_a = temp_2;
-	if (temp_2->prev)
-		temp_2->prev->next = NULL;
+	temp = b->next;
+	if (temp)
+		temp->prev = NULL;
+	(*stack_a)->next = a;
+	(*stack_b)->prev = b;
+	*stack_b = temp;
+	*stack_a = b;
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp_1;
-	t_stack	*temp_2;
+	t_stack	*temp;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (!*stack_a)
 		return ;
-	temp_1 = lstfist(stack_a);
-	temp_2 = lstfist(stack_b);
-	if (temp_2)
-	{
-		temp_2->prev = temp_1;
-		temp_1->next = temp_2;
-	}
-	*stack_b = temp_1;
-	if (temp_1->prev)
-		temp_1->prev->next = NULL;
+	temp = a->next;
+	if (temp)
+		temp->prev = NULL;
+	(*stack_b)->next = b;
+	(*stack_a)->prev = a;
+	*stack_a = temp;
+	*stack_b = a;
 }
