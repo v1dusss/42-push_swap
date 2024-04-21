@@ -6,13 +6,13 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:16:34 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 10:59:13 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 12:03:42 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, int print)
 {
 	t_stack	*temp;
 	t_stack	*a;
@@ -26,9 +26,11 @@ void	sa(t_stack **stack_a)
 	temp->next = a;
 	a->prev = temp;
 	*stack_a = temp;
+	if (print)
+		ft_printf("sa\n");
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, int print)
 {
 	t_stack	*temp;
 	t_stack	*b;
@@ -42,10 +44,13 @@ void	sb(t_stack **stack_b)
 	temp->next = b;
 	b->prev = temp;
 	*stack_b = temp;
+	if (print)
+		ft_printf("sb\n");
 }
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, int print)
 {
-	sa(stack_a);
-	sb(stack_b);
+	sa(stack_a, 0);
+	sb(stack_b, 0);
+	if (print)
+		ft_printf("ss\n");
 }

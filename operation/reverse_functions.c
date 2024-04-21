@@ -6,13 +6,13 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:40:39 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/20 18:00:33 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 12:06:34 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_stack **stack_a)
+void	rra(t_stack **stack_a, int print)
 {
 	t_stack	*temp;
 	t_stack	*a;
@@ -26,9 +26,11 @@ void	rra(t_stack **stack_a)
 	temp->next = a;
 	a->prev = temp;
 	*stack_a = temp;
+	if (print)
+		ft_printf("rra\n");
 }
 
-void	rrb(t_stack **stack_b)
+void	rrb(t_stack **stack_b, int print)
 {
 	t_stack	*temp;
 	t_stack	*b;
@@ -42,10 +44,14 @@ void	rrb(t_stack **stack_b)
 	temp->next = b;
 	b->prev = temp;
 	*stack_b = temp;
+	if (print)
+		ft_printf("rrb\n");
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, int print)
 {
-	rra(stack_a);
-	rrb(stack_b);
+	rra(stack_a, 0);
+	rrb(stack_b, 0);
+	if (print)
+		ft_printf("rrr\n");
 }
