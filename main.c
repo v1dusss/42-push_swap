@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/19 01:40:44 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 11:17:21 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	test(t_stack **stack_a)
 	while (tmp)
 	{
 		printf("%d\t", tmp->nbr);
-		printf("%d\n", tmp->place);
+		printf("%d\n", tmp->index);
 		tmp = tmp->next;
 	}
 }
@@ -33,8 +33,8 @@ int	main(int argc, char **argv)
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));
 	push_swap_parse(argc, argv, &stack_a);
-	get_place(&stack_a);
+	get_index(&stack_a);
 	my_own_sort(&stack_a, &stack_b);
-	test(&stack_a);
+	// test(&stack_a);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:49:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/17 16:24:25 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 11:36:19 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_place(t_stack **stack)
+void	get_index(t_stack **stack)
 {
 	int		i;
 	t_stack	*tmp;
@@ -22,14 +22,14 @@ void	get_place(t_stack **stack)
 	while (tmp)
 	{
 		tmp2 = lstfist(stack);
-		i = 1;
+		i = 0;
 		while (tmp2)
 		{
 			if (tmp2->nbr < tmp->nbr)
 				i++;
 			tmp2 = tmp2->next;
 		}
-		tmp->place = i;
+		tmp->index = i;
 		tmp = tmp->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/17 16:25:23 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 10:49:13 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_stack	*push_swap_lstnew(int data)
 		return (0);
 	stack->nbr = data;
 	stack->next = NULL;
-	stack->place = 0;
+	stack->index = 0;
 	return (stack);
 }
 
