@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 10:49:13 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 22:17:34 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,30 @@ void	input_error(void)
 {
 	ft_putstr_fd("Invalid input error\n", 2);
 	exit(1);
+}
+void	double_input_error(void)
+{
+	ft_putstr_fd("Double input error\n", 2);
+	exit(1);
+}
+
+void	double_input_check(t_stack **stack_a)
+{
+	t_stack	*temp;
+	t_stack	*a;
+
+	temp = lstfist(stack_a);
+	while (temp)
+	{
+		a = temp->next;
+		while (a)
+		{
+			if (temp->nbr == a->nbr)
+				double_input_error();
+			a = a->next;
+		}
+		temp = temp->next;
+	}
 }
 
 int	push_swap_atoi(const char *str)
@@ -77,6 +101,10 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	i = 0;
 	x = 0;
 	nbr = 0;
+	if (argc == 1)
+		input_error();
+	if (argc == 2)
+		exit(0);
 	while (++i < argc)
 	{
 		split = ft_split(argv[i], ' ');
@@ -102,4 +130,5 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 			old = new;
 		}
 	}
+	double_input_check(stack_a);
 }
