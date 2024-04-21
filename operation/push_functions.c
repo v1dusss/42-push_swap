@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 21:31:56 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/20 17:20:10 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 11:03:29 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 
 	if (!*stack_b)
 		return ;
+	a = *stack_a;
+	b = *stack_b;
 	temp = b->next;
 	if (temp)
 		temp->prev = NULL;
-	(*stack_a)->next = a;
-	(*stack_b)->prev = b;
-	*stack_b = temp;
+	b->next = a;
+	a->prev = b;
 	*stack_a = b;
+	*stack_b = temp;
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
@@ -37,11 +39,13 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 
 	if (!*stack_a)
 		return ;
+	a = *stack_a;
+	b = *stack_b;
 	temp = a->next;
 	if (temp)
 		temp->prev = NULL;
-	(*stack_b)->next = b;
-	(*stack_a)->prev = a;
+	a->next = b;
+	b->prev = a;
 	*stack_a = temp;
 	*stack_b = a;
 }

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:16:34 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/20 17:44:07 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/21 10:59:13 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_stack **stack_a)
 
 	if (!*stack_a || !(*stack_a)->next)
 		return ;
-	a = stack_a;
+	a = (*stack_a);
 	temp = a->next;
 	temp->prev = NULL;
 	a->next = temp->next;
@@ -35,7 +35,7 @@ void	sb(t_stack **stack_b)
 
 	if (!*stack_b || !(*stack_b)->next)
 		return ;
-	b = stack_b;
+	b = (*stack_b);
 	temp = b->next;
 	temp->prev = NULL;
 	b->next = temp->next;
