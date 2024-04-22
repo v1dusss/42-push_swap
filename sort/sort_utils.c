@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vsivanat <vsivanat@student.4bin.fr>          +#+  +:+
+	+#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:49:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 11:36:19 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:04:33 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +16,44 @@
 void	get_index(t_stack **stack)
 {
 	int		i;
-	t_stack	*tmp;
-	t_stack	*tmp2;
+	t_stack	*temp;
+	t_stack	*temp2;
 
-	tmp = lstfist(stack);
-	while (tmp)
+	temp = lstfist(stack);
+	while (temp)
 	{
-		tmp2 = lstfist(stack);
+		temp2 = lstfist(stack);
 		i = 0;
-		while (tmp2)
+		while (temp2)
 		{
-			if (tmp2->nbr < tmp->nbr)
+			if (temp2->nbr < temp->nbr)
 				i++;
-			tmp2 = tmp2->next;
+			temp2 = temp2->next;
 		}
-		tmp->index = i;
-		tmp = tmp->next;
+		temp->index = i;
+		temp = temp->next;
+	}
+}
+
+void	three_sort(t_stack **stack_a)
+{
+	t_stack	*a;
+
+	a = lstfist(stack_a);
+	if (a->index == 1 && a->next->index == 0)
+		sa(stack_a, 1);
+	else if (a->index == 2 && a->next->index == 0)
+		ra(stack_a, 1);
+	else if (a->index == 2 && a->next->index == 1)
+	{
+		sa(stack_a, 1);
+		rra(stack_a, 1);
+	}
+	else if (a->index == 1 && a->next->index == 2)
+		rra(stack_a, 1);
+	else if (a->index == 0 && a->next->index == 2)
+	{
+		rra(stack_a, 1);
+		sa(stack_a, 1);
 	}
 }

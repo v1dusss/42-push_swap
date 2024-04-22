@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 17:05:25 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:04:18 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	main(int argc, char **argv)
 	// stack_b = malloc(sizeof(t_stack));
 	push_swap_parse(argc, argv, &stack_a);
 	get_index(&stack_a);
-	my_own_sort(&stack_a, &stack_b);
+	if (lstsize(&stack_a) == 3)
+		three_sort(&stack_a);
+	else
+		my_own_sort(&stack_a, &stack_b);
 	// test(&stack_a);
 	return (0);
 }
