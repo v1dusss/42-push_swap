@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 14:24:11 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:05:25 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	test(t_stack **stack_a)
 	tmp = lstfist(stack_a);
 	while (tmp)
 	{
-		printf("%d\t", tmp->nbr);
-		printf("%d\n", tmp->index);
+		printf("%d\n", tmp->nbr);
 		tmp = tmp->next;
 	}
 }

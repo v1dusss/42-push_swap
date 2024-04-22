@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 22:17:34 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:14:46 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,36 +23,17 @@ void	input_error(void)
 	ft_putstr_fd("Invalid input error\n", 2);
 	exit(1);
 }
-void	double_input_error(void)
+void	double_input_error(int nbr)
 {
-	ft_putstr_fd("Double input error\n", 2);
+	ft_printf("Double input error: %d\n", nbr);
 	exit(1);
-}
-
-void	double_input_check(t_stack **stack_a)
-{
-	t_stack	*temp;
-	t_stack	*a;
-
-	temp = lstfist(stack_a);
-	while (temp)
-	{
-		a = temp->next;
-		while (a)
-		{
-			if (temp->nbr == a->nbr)
-				double_input_error();
-			a = a->next;
-		}
-		temp = temp->next;
-	}
 }
 
 int	push_swap_atoi(const char *str)
 {
-	int	i;
-	int	a;
-	int	k;
+	int		i;
+	int		a;
+	long	k;
 
 	i = 0;
 	a = 1;
@@ -66,6 +47,8 @@ int	push_swap_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		k = k * 10 + (str[i++] - '0');
+		if ((k * a) > 2147483647 || (k * a) < -2147483648)
+			break ;
 		if (!str[i])
 			return (k * a);
 	}
@@ -84,6 +67,42 @@ t_stack	*push_swap_lstnew(int data)
 	stack->next = NULL;
 	stack->index = 0;
 	return (stack);
+}
+
+void	double_input_check(t_stack **stack_a)
+{
+	t_stack	*temp;
+	t_stack	*a;
+
+	temp = lstfist(stack_a);
+	while (temp)
+	{
+		a = temp->next;
+		while (a)
+		{
+			if (temp->nbr == a->nbr)
+				double_input_error(a->nbr);
+			a = a->next;
+		}
+		temp = temp->next;
+	}
+}
+
+void	allready_sorted(t_stack **stack_a)
+{
+	t_stack	*temp;
+	t_stack	*a;
+
+	temp = lstfist(stack_a);
+	while (temp)
+	{
+		a = temp->next;
+		if (a && temp->nbr > a->nbr)
+			return ;
+		temp = temp->next;
+	}
+	ft_putstr_fd("Already sorted\n", 1);
+	exit(0);
 }
 
 void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
@@ -112,8 +131,6 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 		while (split[++j])
 		{
 			nbr = push_swap_atoi(split[j]);
-			if (nbr == 0 && split[j][0] != '0')
-				input_error();
 			new = push_swap_lstnew(nbr);
 			if (!new)
 				malloc_error();
@@ -131,4 +148,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 		}
 	}
 	double_input_check(stack_a);
+	allready_sorted(stack_a);
+	if (PRINT_INPUT)
+		test(stack_a);
 }

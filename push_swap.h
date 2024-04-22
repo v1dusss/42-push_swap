@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 12:08:39 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:09:16 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+# define PRINT_OPERATION 0
+# define PRINT_INPUT 1
+
+void				test(t_stack **stack_a);
 void				push_swap_parse(int argc, char **argv, t_stack **stack_a);
 void				get_index(t_stack **stack);
 t_stack				*lstfist(t_stack **stack);
