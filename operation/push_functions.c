@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 21:31:56 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/21 12:07:34 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:45:29 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	pa(t_stack **stack_a, t_stack **stack_b, int print)
 	if (temp)
 		temp->prev = NULL;
 	b->next = a;
-	a->prev = b;
+	if (a)
+		a->prev = b;
 	*stack_a = b;
 	*stack_b = temp;
 	if (print)
@@ -47,7 +48,8 @@ void	pb(t_stack **stack_a, t_stack **stack_b, int print)
 	if (temp)
 		temp->prev = NULL;
 	a->next = b;
-	b->prev = a;
+	if (b)
+		b->prev = a;
 	*stack_a = temp;
 	*stack_b = a;
 	if (print)
