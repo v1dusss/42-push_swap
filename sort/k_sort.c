@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:28:38 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 23:00:03 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:45:38 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_location(t_stack **stack_b)
 	t_stack	*temp;
 	int		i;
 
-	i = 0;
+	i = 1;
 	temp = lstfist(stack_b);
 	while (temp)
 	{
@@ -28,53 +28,76 @@ void	set_location(t_stack **stack_b)
 	}
 }
 
+t_stack	*rotate_to(t_stack **stack_b, int size, int location)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 0;
+	temp = lstfist(stack_b);
+	while (temp->index != size)
+	{
+		sleep(1);
+		ft_printf("---------\n");
+		ft_printf("temp->nbr: %d\n", temp->nbr);
+		ft_printf("temp->index: %d\n", temp->index);
+		ft_printf("temp->location: %d\n", temp->location);
+		ft_printf("size: %d\n", size);
+		if (location >= (size / 2))
+			rrb(stack_b, 1);
+		else
+			rb(stack_b, 1);
+		temp = lstfist(stack_b);
+		i++;
+		if (i > 10)
+			exit(1);
+	}
+	ft_printf("++++++++++++++++++++++\n");
+	return (temp);
+}
+
 void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
-	t_stack	*b;
-	int		i;
 	int		size;
+	int		i;
+	int		location;
 
-	i = lstsize(stack_b);
-	size = i / 2;
-	b = lstfist(stack_b);
-	set_location(stack_b);
-	ft_printf("A\n");
+	i = 0;
+	location = 0;
+	size = lstsize(stack_b);
 	while ((*stack_b))
 	{
-		b = (*stack_b)->next;
+		set_location(stack_b);
 		temp = lstfist(stack_b);
-		ft_printf("B\n");
-		while (temp && temp->index != i)
+		ft_printf("==A==\n");
+		if (temp->index != size)
 		{
-			ft_printf("C\n");
-			ft_printf("nbr: %d\n", temp->nbr);
-			ft_printf("index: %d\n", temp->index);
-			ft_printf("location: %d\n", temp->location);
-			temp = temp->next;
-		}
-		while (b->index != i)
-		{
-			ft_printf("D\n");
+			ft_printf("==B==\n");
+			while (temp->index == size)
+			{
+				ft_printf("==C==\n");
+				temp = temp->next;
+			}
+			ft_printf("==D==\n");
+			location = temp->location;
+			ft_printf("location: %d\n", location);
+			temp = rotate_to(stack_b, size, location);
+			ft_printf("==E==\n");
+			ft_printf("temp->index: %d\n", temp->index);
 			ft_printf("size: %d\n", size);
-			if (temp->location < size)
-			{
-				ft_printf("E\n");
-				rb(stack_b, 1);
-			}
-			else
-			{
-				ft_printf("F\n");
-				rrb(stack_b, 1);
-			}
 		}
-		if ((*stack_b)->index == i)
+		if (temp->index == size)
 		{
-			ft_printf("G\n");
+			ft_printf("==F==\n");
 			pa(stack_a, stack_b, 1);
 		}
-		ft_printf("H\n");
-		i--;
+		else
+		{
+			ft_printf("Konnte nicht die richtige Zahl finden zum puschen");
+			exit(1);
+		}
+		ft_printf("==G==\n");
 	}
 }
 
