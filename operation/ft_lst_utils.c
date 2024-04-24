@@ -6,13 +6,13 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/23 19:30:41 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*lstfist(t_stack **stack)
+t_stack	*lstfirst(t_stack **stack)
 {
 	t_stack	*temp;
 

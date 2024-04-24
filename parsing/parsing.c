@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 17:14:46 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:25:16 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,11 @@ void	malloc_error(void)
 
 void	input_error(void)
 {
-	ft_putstr_fd("Invalid input error\n", 2);
-	exit(1);
-}
-void	double_input_error(int nbr)
-{
-	ft_printf("Double input error: %d\n", nbr);
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
 
-int	push_swap_atoi(const char *str)
+int	push_swap_atoi(const char *str, char **split)
 {
 	int		i;
 	int		a;
@@ -52,6 +47,7 @@ int	push_swap_atoi(const char *str)
 		if (!str[i])
 			return (k * a);
 	}
+	ft_free_arr((void **)split);
 	input_error();
 	return (0);
 }
@@ -74,14 +70,17 @@ void	double_input_check(t_stack **stack_a)
 	t_stack	*temp;
 	t_stack	*a;
 
-	temp = lstfist(stack_a);
+	temp = lstfirst(stack_a);
 	while (temp)
 	{
 		a = temp->next;
 		while (a)
 		{
 			if (temp->nbr == a->nbr)
-				double_input_error(a->nbr);
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(1);
+			}
 			a = a->next;
 		}
 		temp = temp->next;
@@ -93,7 +92,7 @@ void	allready_sorted(t_stack **stack_a)
 	t_stack	*temp;
 	t_stack	*a;
 
-	temp = lstfist(stack_a);
+	temp = lstfirst(stack_a);
 	while (temp)
 	{
 		a = temp->next;
@@ -101,7 +100,6 @@ void	allready_sorted(t_stack **stack_a)
 			return ;
 		temp = temp->next;
 	}
-	ft_putstr_fd("Already sorted\n", 1);
 	exit(0);
 }
 
@@ -130,7 +128,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 		j = -1;
 		while (split[++j])
 		{
-			nbr = push_swap_atoi(split[j]);
+			nbr = push_swap_atoi(split[j], split);
 			new = push_swap_lstnew(nbr);
 			if (!new)
 				malloc_error();
@@ -146,6 +144,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 			}
 			old = new;
 		}
+		ft_free_arr((void **)split);
 	}
 	double_input_check(stack_a);
 	allready_sorted(stack_a);

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 21:47:25 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void				get_index(t_stack **stack);
 void				three_sort(t_stack **stack_a);
 void				my_own_sort(t_stack **stack_a, t_stack **stack_b);
 void				k_sort_(t_stack **stack_a, t_stack **stack_b);
-t_stack				*lstfist(t_stack **stack);
+t_stack				*lstfirst(t_stack **stack);
 t_stack				*lstlast(t_stack **stack);
 int					lstsize(t_stack **stack);
 // void				bubble_sort(t_stack **stack);

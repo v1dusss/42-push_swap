@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:49:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/23 19:28:57 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	get_index(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*temp2;
 
-	temp = lstfist(stack);
+	temp = lstfirst(stack);
 	while (temp)
 	{
-		temp2 = lstfist(stack);
+		temp2 = lstfirst(stack);
 		i = 1;
 		while (temp2)
 		{
@@ -38,7 +38,7 @@ void	three_sort(t_stack **stack_a)
 {
 	t_stack	*a;
 
-	a = lstfist(stack_a);
+	a = lstfirst(stack_a);
 	if (a->index == 2 && a->next->index == 1)
 		sa(stack_a, 1);
 	else if (a->index == 3 && a->next->index == 1)
