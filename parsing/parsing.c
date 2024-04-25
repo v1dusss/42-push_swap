@@ -6,23 +6,11 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/24 20:25:16 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:26:57 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	malloc_error(void)
-{
-	ft_putstr_fd("Malloc error\n", 2);
-	exit(1);
-}
-
-void	input_error(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
 
 int	push_swap_atoi(const char *str, char **split)
 {
@@ -33,8 +21,6 @@ int	push_swap_atoi(const char *str, char **split)
 	i = 0;
 	a = 1;
 	k = 0;
-	// while (ft_isspace(str[i]))
-	// 	i++;
 	if (str[i] == '-')
 		a = -1;
 	if (str[i] == '+' || str[i] == '-')
@@ -48,21 +34,8 @@ int	push_swap_atoi(const char *str, char **split)
 			return (k * a);
 	}
 	ft_free_arr((void **)split);
-	input_error();
+	print_error();
 	return (0);
-}
-
-t_stack	*push_swap_lstnew(int data)
-{
-	t_stack	*stack;
-
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		return (0);
-	stack->nbr = data;
-	stack->next = NULL;
-	stack->index = 0;
-	return (stack);
 }
 
 void	double_input_check(t_stack **stack_a)
@@ -100,7 +73,37 @@ void	allready_sorted(t_stack **stack_a)
 			return ;
 		temp = temp->next;
 	}
+	// ft_putstr_fd("Already Sorted\n", 1);
 	exit(0);
+}
+
+void	loop_parse(t_stack **stack_a, char **split, int j, int nbr)
+{
+	static int	x;
+	t_stack		*old;
+	t_stack		*new;
+
+	old = NULL;
+	new = NULL;
+	while (split[++j])
+	{
+		nbr = push_swap_atoi(split[j], split);
+		new = push_swap_lstnew(nbr);
+		if (!new)
+			print_error();
+		if (x++ == 0)
+		{
+			*stack_a = new;
+			new->prev = NULL;
+		}
+		else
+		{
+			old = lstlast(stack_a);
+			old->next = new;
+			new->prev = old;
+		}
+		old = new;
+	}
 }
 
 void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
@@ -108,46 +111,25 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	int		i;
 	int		j;
 	int		nbr;
-	int		x;
 	char	**split;
-	t_stack	*old;
-	t_stack	*new;
 
-	old = NULL;
-	new = NULL;
 	i = 0;
-	x = 0;
 	nbr = 0;
-	if (argc == 1)
-		input_error();
-	if (argc == 2)
-		exit(0);
+	j = 0;
 	while (++i < argc)
 	{
-		split = ft_split(argv[i], ' ');
 		j = -1;
-		while (split[++j])
-		{
-			nbr = push_swap_atoi(split[j], split);
-			new = push_swap_lstnew(nbr);
-			if (!new)
-				malloc_error();
-			if (x++ == 0)
-			{
-				*stack_a = new;
-				new->prev = NULL;
-			}
-			else
-			{
-				old->next = new;
-				new->prev = old;
-			}
-			old = new;
-		}
+		split = ft_split(argv[i], ' ');
+		loop_parse(stack_a, split, j, nbr);
 		ft_free_arr((void **)split);
 	}
+	if (!*stack_a || lstsize(stack_a) < 2)
+		exit(0);
 	double_input_check(stack_a);
 	allready_sorted(stack_a);
-	if (PRINT_INPUT)
-		test(stack_a);
+	if (lstsize(stack_a) == 2)
+	{
+		sa(stack_a, PRINT_OPERATION);
+		exit(0);
+	}
 }

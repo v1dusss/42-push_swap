@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:25:26 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,30 @@ int	lstsize(t_stack **stack)
 		count++;
 	}
 	return (count);
+}
+
+t_stack	*push_swap_lstnew(int data)
+{
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (0);
+	stack->nbr = data;
+	stack->next = NULL;
+	stack->index = 0;
+	return (stack);
+}
+
+void	clear_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while ((*stack)->next)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	free(*stack);
 }

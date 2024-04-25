@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:16:23 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct s_stack
 # define PRINT_INPUT 0
 
 void				test(t_stack **stack_a);
+void				print_error(void);
 void				push_swap_parse(int argc, char **argv, t_stack **stack_a);
+void				loop_parse(t_stack **stack_a, char **split, int j, int x);
 void				get_index(t_stack **stack);
 void				three_sort(t_stack **stack_a);
 void				my_own_sort(t_stack **stack_a, t_stack **stack_b);
@@ -38,6 +40,8 @@ void				k_sort_(t_stack **stack_a, t_stack **stack_b);
 t_stack				*lstfirst(t_stack **stack);
 t_stack				*lstlast(t_stack **stack);
 int					lstsize(t_stack **stack);
+t_stack				*push_swap_lstnew(int data);
+void				clear_stack(t_stack **stack);
 // void				bubble_sort(t_stack **stack);
 void				sa(t_stack **stack_a, int print);
 void				sb(t_stack **stack_b, int print);
