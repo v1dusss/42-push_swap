@@ -6,13 +6,13 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 16:26:57 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:43:05 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_swap_atoi(const char *str, char **split)
+int	push_swap_atoi(t_stack **stack_a, const char *str, char **split)
 {
 	int		i;
 	int		a;
@@ -33,8 +33,8 @@ int	push_swap_atoi(const char *str, char **split)
 		if (!str[i])
 			return (k * a);
 	}
-	ft_free_arr((void **)split);
-	print_error();
+	clear_stack(stack_a);
+	print_error(split);
 	return (0);
 }
 
@@ -51,6 +51,7 @@ void	double_input_check(t_stack **stack_a)
 		{
 			if (temp->nbr == a->nbr)
 			{
+				clear_stack(stack_a);
 				ft_putstr_fd("Error\n", 2);
 				exit(1);
 			}
@@ -74,6 +75,7 @@ void	allready_sorted(t_stack **stack_a)
 		temp = temp->next;
 	}
 	// ft_putstr_fd("Already Sorted\n", 1);
+	clear_stack(stack_a);
 	exit(0);
 }
 
@@ -87,10 +89,10 @@ void	loop_parse(t_stack **stack_a, char **split, int j, int nbr)
 	new = NULL;
 	while (split[++j])
 	{
-		nbr = push_swap_atoi(split[j], split);
+		nbr = push_swap_atoi(stack_a, split[j], split);
 		new = push_swap_lstnew(nbr);
 		if (!new)
-			print_error();
+			print_error(split);
 		if (x++ == 0)
 		{
 			*stack_a = new;
@@ -130,6 +132,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	if (lstsize(stack_a) == 2)
 	{
 		sa(stack_a, PRINT_OPERATION);
+		clear_stack(stack_a);
 		exit(0);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 16:27:02 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:32:53 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	test(t_stack **stack_a)
 	ft_putstr_fd("*******************\n", 1);
 }
 
-void	print_error(void)
+void	print_error(char **split)
 {
+	ft_free_arr((void **)split);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

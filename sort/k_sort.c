@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:28:38 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/24 19:30:03 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:46:59 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 		}
 		if (temp->index == size)
 			pa(stack_a, stack_b, 1);
-		else
-			exit(1);
 		size--;
 	}
 }
