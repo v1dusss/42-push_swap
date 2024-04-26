@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:49:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/24 19:14:44 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:19:11 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,29 @@ void	three_sort(t_stack **stack_a)
 		rra(stack_a, 1);
 		sa(stack_a, 1);
 	}
+}
+
+void	five_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	int		i;
+	t_stack	*temp;
+
+	i = 0;
+	while (i < 2)
+	{
+		temp = lstfirst(stack_a);
+		if (temp->index == 1 || temp->index == 2)
+		{
+			pb(stack_a, stack_b, 1);
+			i++;
+		}
+		else
+			ra(stack_a, 1);
+	}
+	if (lstfirst(stack_b)->index == 1)
+		sb(stack_b, 1);
+	get_index(stack_a);
+	three_sort(stack_a);
+	pa(stack_a, stack_b, 1);
+	pa(stack_a, stack_b, 1);
 }

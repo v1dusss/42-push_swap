@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 16:32:53 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:54:06 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 	get_index(&stack_a);
 	if (lstsize(&stack_a) == 3)
 		three_sort(&stack_a);
+	else if (lstsize(&stack_a) == 5)
+		five_sort(&stack_a, &stack_b);
 	else
 		k_sort_(&stack_a, &stack_b);
 	// test(&stack_a);

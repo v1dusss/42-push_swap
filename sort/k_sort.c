@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:28:38 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 16:46:59 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:18:45 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	k_sort_(t_stack **stack_a, t_stack **stack_b)
 	float	range;
 
 	push_counter = 0;
-	range = sqrt_custom(lstsize(stack_a)) * 2;
+	range = sqrt_custom(lstsize(stack_a)) * 1.4;
 	while ((*stack_a))
 	{
 		if ((*stack_a)->index <= push_counter)

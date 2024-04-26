@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 16:32:08 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:06:12 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void				push_swap_parse(int argc, char **argv, t_stack **stack_a);
 void				loop_parse(t_stack **stack_a, char **split, int j, int x);
 void				get_index(t_stack **stack);
 void				three_sort(t_stack **stack_a);
+void				five_sort(t_stack **stack_a, t_stack **stack_b);
 void				my_own_sort(t_stack **stack_a, t_stack **stack_b);
 void				k_sort_(t_stack **stack_a, t_stack **stack_b);
+void				set_location(t_stack **stack_b);
 t_stack				*lstfirst(t_stack **stack);
 t_stack				*lstlast(t_stack **stack);
 int					lstsize(t_stack **stack);
