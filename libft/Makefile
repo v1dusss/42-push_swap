@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/14 20:24:52 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/14 15:09:40 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/26 13:04:19 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,8 @@ ft_lstclear_bonus.c \
 ft_lstiter_bonus.c \
 ft_lstmap_bonus.c \
 ft_strlower.c \
-ft_strupper.c
+ft_strupper.c \
+get_next_line.c
 
 NAME = libft.a
 
