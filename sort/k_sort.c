@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:28:38 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/26 19:18:45 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/27 22:01:22 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	set_location(t_stack **stack_b)
 t_stack	*rotate_to(t_stack **stack_b, int size, int location)
 {
 	t_stack	*temp;
-	int		i;
-
-	i = 0;
+	
 	temp = lstfirst(stack_b);
 	while (temp->index != size)
 	{
@@ -41,7 +39,6 @@ t_stack	*rotate_to(t_stack **stack_b, int size, int location)
 		else
 			rb(stack_b, 1);
 		temp = lstfirst(stack_b);
-		i++;
 	}
 	return (temp);
 }

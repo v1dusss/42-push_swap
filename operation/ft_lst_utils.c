@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/25 14:25:26 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:58:47 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	lstsize(t_stack **stack)
 	return (count);
 }
 
-t_stack	*push_swap_lstnew(int data)
+t_stack	*lstnew(int data)
 {
 	t_stack	*stack;
 
@@ -68,7 +68,7 @@ t_stack	*push_swap_lstnew(int data)
 	return (stack);
 }
 
-void	clear_stack(t_stack **stack)
+void	lstclear(t_stack **stack)
 {
 	t_stack	*tmp;
 
