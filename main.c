@@ -6,32 +6,11 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/28 12:50:23 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:03:09 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	test(t_stack **stack_a)
-{
-	t_stack	*tmp;
-
-	tmp = lstfirst(stack_a);
-	ft_putstr_fd("*******************\n", 1);
-	while (tmp)
-	{
-		printf("%d\n", tmp->nbr);
-		tmp = tmp->next;
-	}
-	ft_putstr_fd("*******************\n", 1);
-}
-
-void	print_error(char **split)
-{
-	ft_free_arr((void **)split);
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
 
 int	main(int argc, char **argv)
 {
@@ -44,7 +23,9 @@ int	main(int argc, char **argv)
 		return (0);
 	push_swap_parse(argc, argv, &stack_a);
 	get_index(&stack_a);
-	if (lstsize(&stack_a) == 3)
+	if (lstsize(&stack_a) == 2)
+		sa(&stack_a, 1);
+	else if (lstsize(&stack_a) == 3)
 		three_sort(&stack_a);
 	else if (lstsize(&stack_a) == 5)
 		five_sort(&stack_a, &stack_b);

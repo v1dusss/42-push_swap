@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/28 13:07:34 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/28 17:11:00 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ SRC = \
 		bubble_sort.c \
 		my_own_sort.c \
 		k_sort.c \
-		sort_utils.c
+		sort_utils.c \
+		utils.c
 
-BONUS_SRC = $(SRC)
-BONUS_SRC += bonus.c
+BONUS_SRC := $(SRC)
+BONUS_SRC += checker.c
 
 SRC += main.c
 
@@ -60,7 +61,7 @@ clean:
 	make -C libft clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	make -C libft fclean
 
 re: fclean all

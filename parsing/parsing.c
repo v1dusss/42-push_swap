@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/28 12:51:10 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:02:50 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,4 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 		exit(0);
 	double_input_check(stack_a);
 	allready_sorted(stack_a);
-	if (lstsize(stack_a) == 2)
-	{
-		sa(stack_a, PRINT_OPERATION);
-		lstclear(stack_a);
-		exit(0);
-	}
 }
