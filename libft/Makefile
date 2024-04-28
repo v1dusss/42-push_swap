@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/14 20:24:52 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/26 13:04:19 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/28 13:23:38 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ ft_putnbr_fd.c \
 ft_putstr_fd.c \
 ft_split.c \
 ft_strchr.c \
+ft_strcmp.c \
 ft_strdup.c \
 ft_striteri.c \
 ft_strjoin.c \
