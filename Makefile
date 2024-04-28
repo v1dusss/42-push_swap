@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/22 20:25:33 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/04/28 13:07:34 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INC = -I . -I libft -I parsing
 OBJDIR := obj
+BONUS_NAME = checker
 
 VPATH =	parsing \
 		operation \
 		sort
 
-SRC =	main.c \
+SRC = \
 		parsing.c \
 		ft_lst_utils.c \
 		swap_functions.c \
@@ -33,15 +34,26 @@ SRC =	main.c \
 		k_sort.c \
 		sort_utils.c
 
+BONUS_SRC = $(SRC)
+BONUS_SRC += bonus.c
+
+SRC += main.c
+
 OBJ	:=	$(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+BONUS_OBJ := $(addprefix $(OBJDIR)/, $(BONUS_SRC:.c=.o))
 
 all: libft $(NAME)
+
+bonus: libft $(BONUS_NAME)
 
 libft:
 	make -C libft
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(INC) -o $(NAME) $(OBJ) -L libft -lft
+
+$(BONUS_NAME): $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(INC) -o $(BONUS_NAME) $(BONUS_OBJ) -L libft -lft
 
 clean:
 	rm -rf $(OBJDIR)

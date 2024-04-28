@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:16:34 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/22 17:07:26 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:50:48 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	sb(t_stack **stack_b, int print)
 	if (print && PRINT_OPERATION)
 		ft_printf("sb\n");
 }
+
 void	ss(t_stack **stack_a, t_stack **stack_b, int print)
 {
 	sa(stack_a, 0);

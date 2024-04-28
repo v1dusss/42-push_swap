@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/27 21:58:47 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:51:10 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	allready_sorted(t_stack **stack_a)
 			return ;
 		temp = temp->next;
 	}
-	// ft_putstr_fd("Already Sorted\n", 1);
 	lstclear(stack_a);
 	exit(0);
 }
