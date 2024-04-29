@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 12:49:11 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:12:46 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,18 @@ void	lstclear(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	while ((*stack)->next)
+	if (!*stack)
+		exit(0);
+	if (lstsize(stack) < 2)
 	{
-		tmp = (*stack)->next;
 		free(*stack);
-		*stack = tmp;
+		exit(0);
+	}
+	while (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
 	}
 	free(*stack);
 }

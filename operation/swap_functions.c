@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:16:34 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/28 12:50:48 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:11:42 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sa(t_stack **stack_a, int print)
 	a = (*stack_a);
 	temp = a->next;
 	temp->prev = NULL;
+	if (temp->next)
+		temp->next->prev = a;
 	a->next = temp->next;
 	temp->next = a;
 	a->prev = temp;
@@ -40,6 +42,8 @@ void	sb(t_stack **stack_b, int print)
 	b = (*stack_b);
 	temp = b->next;
 	temp->prev = NULL;
+	if (temp->next)
+		temp->next->prev = b;
 	b->next = temp->next;
 	temp->next = b;
 	b->prev = temp;

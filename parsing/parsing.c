@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 15:08:30 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:15:06 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,16 +122,18 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	{
 		j = -1;
 		split = ft_split(argv[i], ' ');
-		if (!split || !split[0])
+		if (!split)
 		{
 			ft_putstr_fd("Error\n", 2);
 			exit(1);
 		}
+		if (!split[0])
+			print_error(split);
 		loop_parse(stack_a, split, j, nbr);
 		ft_free_arr((void **)split);
 	}
 	if (!*stack_a || lstsize(stack_a) < 2)
-		exit(0);
+		lstclear(stack_a);
 	double_input_check(stack_a);
 	allready_sorted(stack_a);
 }
