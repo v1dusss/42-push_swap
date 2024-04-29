@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:08:09 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/28 17:36:31 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:12:00 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	checker_output(t_stack **stack_a, t_stack **stack_b, int output)
 {
 	if (*stack_a)
-		lstclear(stack_a);
+		lstclear(stack_a, 0);
 	if (*stack_b)
-		lstclear(stack_b);
+		lstclear(stack_b, 0);
 	if (output)
 	{
 		if (output == 1)

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:20 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/28 17:03:16 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:17:36 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_stack
 
 //_--------------------------------------------------------------------------_//
 // ** ----------------------------- Parsing ----------------------------- ** //
+void				print_error1(char **split, t_stack **stack_a);
 void				print_error(char **split);
 void				push_swap_parse(int argc, char **argv, t_stack **stack_a);
 void				loop_parse(t_stack **stack_a, char **split, int j, int x);
@@ -53,8 +54,8 @@ void				set_location(t_stack **stack_b);
 t_stack				*lstfirst(t_stack **stack);
 t_stack				*lstlast(t_stack **stack);
 int					lstsize(t_stack **stack);
-t_stack				*lstnew(int data);
-void				lstclear(t_stack **stack);
+t_stack				*lstnew(int data, t_stack **stack_a, char **split);
+void				lstclear(t_stack **stack, int n);
 
 //_--------------------------------------------------------------------------_//
 // ** --------------------------- Operations ---------------------------- ** //

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 19:15:06 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:18:08 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	push_swap_atoi(t_stack **stack_a, const char *str, char **split)
 			return (k * a);
 	}
 	if (lstsize(stack_a) > 0)
-		lstclear(stack_a);
+		lstclear(stack_a, 0);
 	print_error(split);
 	return (0);
 }
@@ -52,7 +52,7 @@ void	double_input_check(t_stack **stack_a)
 		{
 			if (temp->nbr == a->nbr)
 			{
-				lstclear(stack_a);
+				lstclear(stack_a, 0);
 				ft_putstr_fd("Error\n", 2);
 				exit(1);
 			}
@@ -75,7 +75,7 @@ void	allready_sorted(t_stack **stack_a)
 			return ;
 		temp = temp->next;
 	}
-	lstclear(stack_a);
+	lstclear(stack_a, 0);
 	exit(0);
 }
 
@@ -90,9 +90,7 @@ void	loop_parse(t_stack **stack_a, char **split, int j, int nbr)
 	while (split[++j])
 	{
 		nbr = push_swap_atoi(stack_a, split[j], split);
-		new = lstnew(nbr);
-		if (!new)
-			print_error(split);
+		new = lstnew(nbr, stack_a, split);
 		if (x++ == 0)
 		{
 			*stack_a = new;
@@ -133,7 +131,7 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 		ft_free_arr((void **)split);
 	}
 	if (!*stack_a || lstsize(stack_a) < 2)
-		lstclear(stack_a);
+		lstclear(stack_a, 1);
 	double_input_check(stack_a);
 	allready_sorted(stack_a);
 }

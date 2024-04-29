@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:10:21 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 19:12:46 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:17:12 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,30 @@ int	lstsize(t_stack **stack)
 	return (count);
 }
 
-t_stack	*lstnew(int data)
+t_stack	*lstnew(int data, t_stack **stack_a, char **split)
 {
 	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
-		return (0);
+	{
+		if (stack_a)
+			lstclear(stack_a, 0);
+		print_error(split);
+	}
 	stack->nbr = data;
 	stack->next = NULL;
 	stack->index = 0;
 	return (stack);
 }
 
-void	lstclear(t_stack **stack)
+void	lstclear(t_stack **stack, int n)
 {
 	t_stack	*tmp;
 
-	if (!*stack)
+	if (!*stack && n)
 		exit(0);
-	if (lstsize(stack) < 2)
+	if (lstsize(stack) < 2 && n)
 	{
 		free(*stack);
 		exit(0);
