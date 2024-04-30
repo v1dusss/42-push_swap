@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:08:09 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 21:12:00 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:40:45 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	is_sorted(t_stack **stack_a, t_stack **stack_b)
 	checker_output(stack_a, stack_b, 0);
 }
 
-void	checker_input(char *str, t_stack **stack_a, t_stack **stack_b)
+int	checker_input(char *str, t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_strncmp(str, "sa\n", 3) == 0)
 		sa(stack_a, 0);
@@ -76,13 +76,16 @@ void	checker_input(char *str, t_stack **stack_a, t_stack **stack_b)
 	else if (ft_strncmp(str, "rrr\n", 4) == 0)
 		rrr(stack_a, stack_b, 0);
 	else
-		checker_output(stack_a, stack_b, 1);
+		return (1);
+	return (0);
 }
 
 void	loop_checker(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*str;
+	int		i;
 
+	i = -1;
 	while (1)
 	{
 		str = get_next_line(0);
@@ -90,9 +93,13 @@ void	loop_checker(t_stack **stack_a, t_stack **stack_b)
 		{
 			break ;
 		}
-		checker_input(str, stack_a, stack_b);
+		i = checker_input(str, stack_a, stack_b);
 		free(str);
+		if (i)
+			checker_output(stack_a, stack_b, 1);
 	}
+	if (i == -1 && allready_sorted(stack_a, 1))
+		checker_output(stack_a, stack_b, 0);
 }
 
 int	main(int argc, char **argv)
@@ -104,7 +111,13 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
-	push_swap_parse(argc, argv, &stack_a);
+	push_swap_parse(argc, argv, &stack_a, 1);
+	if (double_input_check(&stack_a, 1))
+	{
+		lstclear(&stack_a, 0);
+		ft_printf("Error\n");
+		exit(1);
+	}
 	loop_checker(&stack_a, &stack_b);
 	is_sorted(&stack_a, &stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 21:18:08 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:21:37 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	push_swap_atoi(t_stack **stack_a, const char *str, char **split)
 	return (0);
 }
 
-void	double_input_check(t_stack **stack_a)
+int	double_input_check(t_stack **stack_a, int checker)
 {
 	t_stack	*temp;
 	t_stack	*a;
@@ -52,6 +52,8 @@ void	double_input_check(t_stack **stack_a)
 		{
 			if (temp->nbr == a->nbr)
 			{
+				if (checker)
+					return (1);
 				lstclear(stack_a, 0);
 				ft_putstr_fd("Error\n", 2);
 				exit(1);
@@ -60,9 +62,10 @@ void	double_input_check(t_stack **stack_a)
 		}
 		temp = temp->next;
 	}
+	return (0);
 }
 
-void	allready_sorted(t_stack **stack_a)
+int	allready_sorted(t_stack **stack_a, int checker)
 {
 	t_stack	*temp;
 	t_stack	*a;
@@ -72,9 +75,11 @@ void	allready_sorted(t_stack **stack_a)
 	{
 		a = temp->next;
 		if (a && temp->nbr > a->nbr)
-			return ;
+			return (0);
 		temp = temp->next;
 	}
+	if (checker)
+		return (1);
 	lstclear(stack_a, 0);
 	exit(0);
 }
@@ -104,9 +109,10 @@ void	loop_parse(t_stack **stack_a, char **split, int j, int nbr)
 		}
 		old = new;
 	}
+	ft_free_arr((void **)split);
 }
 
-void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
+void	push_swap_parse(int argc, char **argv, t_stack **stack_a, int checker)
 {
 	int		i;
 	int		j;
@@ -120,18 +126,14 @@ void	push_swap_parse(int argc, char **argv, t_stack **stack_a)
 	{
 		j = -1;
 		split = ft_split(argv[i], ' ');
-		if (!split)
-		{
-			ft_putstr_fd("Error\n", 2);
-			exit(1);
-		}
-		if (!split[0])
+		if (!split || !split[0])
 			print_error(split);
 		loop_parse(stack_a, split, j, nbr);
-		ft_free_arr((void **)split);
 	}
 	if (!*stack_a || lstsize(stack_a) < 2)
 		lstclear(stack_a, 1);
-	double_input_check(stack_a);
-	allready_sorted(stack_a);
+	if (checker)
+		return ;
+	nbr = double_input_check(stack_a, 0);
+	nbr = allready_sorted(stack_a, 0);
 }

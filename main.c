@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:09:01 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/29 21:11:29 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:13:58 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
-	push_swap_parse(argc, argv, &stack_a);
+	push_swap_parse(argc, argv, &stack_a, 0);
 	get_index(&stack_a);
 	if (lstsize(&stack_a) == 2)
 		sa(&stack_a, 1);
