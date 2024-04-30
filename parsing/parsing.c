@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:21:44 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/30 17:21:37 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:19:43 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,17 @@ void	loop_parse(t_stack **stack_a, char **split, int j, int nbr)
 void	push_swap_parse(int argc, char **argv, t_stack **stack_a, int checker)
 {
 	int		i;
-	int		j;
 	int		nbr;
 	char	**split;
 
 	i = 0;
 	nbr = 0;
-	j = 0;
 	while (++i < argc)
 	{
-		j = -1;
 		split = ft_split(argv[i], ' ');
 		if (!split || !split[0])
 			print_error(split);
-		loop_parse(stack_a, split, j, nbr);
+		loop_parse(stack_a, split, -1, nbr);
 	}
 	if (!*stack_a || lstsize(stack_a) < 2)
 		lstclear(stack_a, 1);

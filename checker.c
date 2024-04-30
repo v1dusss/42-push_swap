@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:08:09 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/30 17:40:45 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:17:43 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,11 @@ void	loop_checker(t_stack **stack_a, t_stack **stack_b)
 		}
 		i = checker_input(str, stack_a, stack_b);
 		free(str);
-		if (i)
+		if (i == 1)
+		{
+			get_next_line(-1);
 			checker_output(stack_a, stack_b, 1);
+		}
 	}
 	if (i == -1 && allready_sorted(stack_a, 1))
 		checker_output(stack_a, stack_b, 0);
