@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 20:28:38 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/27 22:01:22 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/05/01 15:09:17 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_location(t_stack **stack_b)
 t_stack	*rotate_to(t_stack **stack_b, int size, int location)
 {
 	t_stack	*temp;
-	
+
 	temp = lstfirst(stack_b);
 	while (temp->index != size)
 	{
@@ -116,5 +116,4 @@ void	k_sort_(t_stack **stack_a, t_stack **stack_b)
 			ra(stack_a, 1);
 	}
 	push_to_a(stack_a, stack_b);
-	// ft_printf("end of k_sort\n");
 }

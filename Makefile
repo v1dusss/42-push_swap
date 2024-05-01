@@ -6,14 +6,14 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/04/29 18:40:51 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/05/01 15:13:12 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 INC = -I . -I libft -I parsing
 OBJDIR := obj
 BONUS_NAME = checker
