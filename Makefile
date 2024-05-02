@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/05/01 15:13:12 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/05/02 23:54:00 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,5 +69,18 @@ re: fclean all
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+visualizer:
+	@if [ ! -d "push_swap_visualizer" ]; then \
+		echo "Cloning repository..."; \
+		git clone https://github.com/o-reo/push_swap_visualizer; \
+		echo "Building visualizer..."; \
+		mkdir -p push_swap_visualizer/build; \
+		cd push_swap_visualizer/build && cmake .. >/dev/null 2>&1 && make >/dev/null 2>&1; \
+	else \
+		echo "Visualizer already exists."; \
+	fi
+	@echo "Running visualizer..."
+	@./push_swap_visualizer/build/bin/visualizer
 
 .PHONY: all clean fclean re libft
