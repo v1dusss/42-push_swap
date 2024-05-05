@@ -6,14 +6,14 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/05/05 14:51:29 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/05/05 16:23:50 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I includes
 INC = -I . -I libft -I parsing
 OBJDIR := obj
 BONUS_NAME = checker
@@ -48,26 +48,27 @@ all: libft $(NAME)
 bonus: libft $(BONUS_NAME)
 
 libft:
-	@if [ ! -d libft ]; then \
+	@if [ ! -f libft/Makefile ]; then \
 		echo "Cloning repository..."; \
 		git clone https://github.com/v1dusss/42-Libft.git libft; \
+		echo "\033[1;32m 💾 [Libft cloned]\033[0m"; \
 	fi
 	@make -C libft
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(INC) -o $(NAME) $(OBJ) -L libft -lft
-	@echo "\033[1;32m✅ [push_swap created]\033[0m"
+	@echo "\033[1;32m ✅ [push_swap created]\033[0m"
 
 $(BONUS_NAME): $(BONUS_OBJ)
 	@$(CC) $(CFLAGS) $(INC) -o $(BONUS_NAME) $(BONUS_OBJ) -L libft -lft
-	@echo "\033[1;32m✅ [checker created]\033[0m"
+	@echo "\033[1;32m ✅ [checker created]\033[0m"
 
 clean:
 	@rm -rf $(OBJDIR)
 	@make -C libft clean
 
 fclean:
-	@echo "\033[1;33m🗑️  Deleting the obj directory and executable... 🗑️\033[0m"
+	@echo "\033[1;33m 🗑️  Deleting the obj directory and executable... 🗑️\033[0m"
 	@make clean
 	@rm -f $(NAME) $(BONUS_NAME)
 	@make -C libft fclean
