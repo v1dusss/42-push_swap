@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/05/02 23:54:00 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/05/05 14:51:29 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,27 +48,35 @@ all: libft $(NAME)
 bonus: libft $(BONUS_NAME)
 
 libft:
-	make -C libft
+	@if [ ! -d libft ]; then \
+		echo "Cloning repository..."; \
+		git clone https://github.com/v1dusss/42-Libft.git libft; \
+	fi
+	@make -C libft
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(INC) -o $(NAME) $(OBJ) -L libft -lft
+	@$(CC) $(CFLAGS) $(INC) -o $(NAME) $(OBJ) -L libft -lft
+	@echo "\033[1;32m✅ [push_swap created]\033[0m"
 
 $(BONUS_NAME): $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(INC) -o $(BONUS_NAME) $(BONUS_OBJ) -L libft -lft
+	@$(CC) $(CFLAGS) $(INC) -o $(BONUS_NAME) $(BONUS_OBJ) -L libft -lft
+	@echo "\033[1;32m✅ [checker created]\033[0m"
 
 clean:
-	rm -rf $(OBJDIR)
-	make -C libft clean
+	@rm -rf $(OBJDIR)
+	@make -C libft clean
 
-fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
-	make -C libft fclean
+fclean:
+	@echo "\033[1;33m🗑️  Deleting the obj directory and executable... 🗑️\033[0m"
+	@make clean
+	@rm -f $(NAME) $(BONUS_NAME)
+	@make -C libft fclean
 
 re: fclean all
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 visualizer:
 	@if [ ! -d "push_swap_visualizer" ]; then \
