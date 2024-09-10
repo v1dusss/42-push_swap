@@ -6,7 +6,7 @@
 /*   By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:08:09 by vsivanat          #+#    #+#             */
-/*   Updated: 2024/04/30 19:17:43 by vsivanat         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:37:55 by vsivanat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	main(int argc, char **argv)
 	if (double_input_check(&stack_a, 1))
 	{
 		lstclear(&stack_a, 0);
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 1);
 		exit(1);
 	}
 	loop_checker(&stack_a, &stack_b);
