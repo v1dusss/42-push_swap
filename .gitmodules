@@ -1,4 +1,0 @@
-[submodule "libft"]
-	path = libft
-	url = https://github.com/v1dusss/42-Libft.git
-	brach = c59d8ed

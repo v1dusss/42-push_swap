@@ -6,7 +6,7 @@
 #    By: vsivanat <vsivanat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 14:14:38 by vsivanat          #+#    #+#              #
-#    Updated: 2024/05/22 17:50:18 by vsivanat         ###   ########.fr        #
+#    Updated: 2024/09/10 20:27:30 by vsivanat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,11 +50,6 @@ all: libft $(NAME)
 bonus: libft $(BONUS_NAME)
 
 libft:
-	@if [ ! -f libft/Makefile ]; then \
-		echo "Cloning repository..."; \
-		git clone https://github.com/v1dusss/42-Libft.git libft; \
-		echo "\033[1;32m 💾 [Libft cloned]\033[0m"; \
-	fi
 	@make -C libft
 
 $(NAME): $(OBJ)
